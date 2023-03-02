@@ -5,9 +5,9 @@
 
 // Defining the values that an 'enum opal_card_type' can take
 enum opal_card_type {
-    adult, 
-    student, 
-    concession
+    ADULT, 
+    STUDENT, 
+    CONCESSION
 };
 
 // We can include an enum in a struct just like any other kind of variable
@@ -23,25 +23,27 @@ int main(void) {
 
     // The variable type here is 'enum opal_card_type' and the variable name 
     // is 'sashas_card'
-    enum opal_card_type sashas_card = adult;
-    if (sashas_card == adult) {
-        printf("Sasha has to pay the full train fare\n");
-    }
+    enum opal_card_type sashas_card = ADULT;
 
     // Declaring and initialising a struct person with enum opal_card_type
     struct person shrey;
     shrey.shoe_size = 44;
     shrey.height = 1.85;
     shrey.first_name_initial = 'S';
-    shrey.card_type = student;
+    shrey.card_type = STUDENT;
 
-    if (shrey.card_type == student) {
-        printf(
-            "Shrey's going to have an adult opal card now that he's finally "
-            "going to graduate!\n"
-        );
-        shrey.card_type = adult;
+    // We can compare Shrey's card type by using the name of the enum field
+    // i.e. ADULT, STUDENT or CONCESSION
+    double train_fare = 0.0;
+    if (shrey.card_type == ADULT) {
+        train_fare = 4.40;
+    } else if (shrey.card_type == STUDENT) {
+        train_fare = 2.20;
+    } else if (shrey.card_type == CONCESSION) {
+        train_fare = 4.30;
     }
+
+    printf("Shrey's train fare is $%.2lf\n", train_fare);
 
     return 0;
 }
