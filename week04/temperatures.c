@@ -21,6 +21,8 @@ int main(void) {
     int max = temperatures[0];
     int j = 0;
     while (j < NUM_DAYS) {
+        // If the current temperature value is larger than max, we need to 
+        // update max to this value
         if (temperatures[j] > max) {
             max = temperatures[j];
         }
